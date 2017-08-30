@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class CheckList extends React.Component {
     render() {
@@ -21,5 +22,10 @@ class CheckList extends React.Component {
         )
     }
 }
+CheckList.PropTypes = {
+    cardId: PropTypes.number,
+    tasks: PropTypes.arrayOf(PropTypes.object)
+}
+
 
 export default CheckList;
