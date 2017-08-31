@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "./ContactsApp";
 import KanbanBoard from "./KanbanBoard";
 
 let cardsList = [
