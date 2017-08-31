@@ -35,6 +35,14 @@ let cardsList = [
             },
         ]
     },
+    {
+        id: 3,
+        title: "This is a new card with a very, very long title, this having more than 80 charactersThis is a new card with a very, very long title, this having more than 80 charactersThis is a new card with a very, very long title, this having more than 80 characters",
+        description: "I should read the **whole** book",
+        color: '#408fe1',
+        status: "done",
+        tasks: []
+    }
 ]
 class HelloMessage extends React.Component {
     render() {

@@ -15,7 +15,7 @@ class List extends React.Component {
         )
     }
 }
-List.PropTypes = {
+List.propTypes = {
     title: PropTypes.string.isRequired,
     cards: PropTypes.arrayOf(PropTypes.object)
 }

@@ -22,7 +22,7 @@ class CheckList extends React.Component {
         )
     }
 }
-CheckList.PropTypes = {
+CheckList.propTypes = {
     cardId: PropTypes.number,
     tasks: PropTypes.arrayOf(PropTypes.object)
 }
