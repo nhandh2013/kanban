@@ -2,11 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 class ContactsApp extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            filterText: ''
+        }
+    }
+    handleUserInput(searchItem) {
+        this.setState({
+            filterText: searchItem
+        })
+    }
     render() {
         return (
             <div>
-                <SearchBar />
-                <ContactList contacts={this.props.contacts} />
+                <SearchBar filterText={this.state.filterText} onUserInput={this.handleUserInput.bind(this)}/>
+                <ContactList contacts={this.props.contacts} filterText={this.state.filterText}/>
             </div>
         )
     }
@@ -17,17 +28,28 @@ ContactsApp.propTypes = {
 }
 
 class SearchBar extends React.Component {
-    render() {
-        return <input type="search" placeholder="search"/>
+    handleChange(event) {
+        this.props.onUserInput(event.target.value)
     }
+    render() {
+        return <input type="search" placeholder="search" value={this.props.filterText} onChange={this.handleChange.bind(this)}/>
+    }
+}
+SearchBar.propTypes = {
+    onUserInput: PropTypes.func.isRequired,
+    filterText: PropTypes.string.isRequired
 }
 
 class ContactList extends React.Component {
     render() {
+        let filteredContacts = this.props.contacts.filter(
+            (contact) => contact.name.indexOf(this.props.filterText) !== -1
+        );
+        console.log(filteredContacts);
         return (
             <ul>
                 {
-                    this.props.contacts.map( (contact) =>
+                    filteredContacts.map( (contact) =>
                         <ContactItem key={contact.email} name={contact.name} email={contact.email} />
                     )
                 }
