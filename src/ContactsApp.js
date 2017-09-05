@@ -1,6 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import 'whatwg-fetch';
+
+class ContactsAppContainer extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            contacts: []
+        }
+    }
+    componentDidMount() {
+        fetch('./contacts.json')
+            .then((response) => response.json())
+            .then((responseData) => {
+                this.setState({contacts: responseData})
+            })
+            .catch((error) => {
+                console.log("Error fetching and parsing data", error);
+            });
+    }
+    render() {
+        return (
+            <ContactsApp contacts={this.state.contacts} />
+        )
+    }
+}
+
 class ContactsApp extends React.Component {
     constructor() {
         super();
@@ -72,13 +98,13 @@ ContactItem.propTypes = {
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired
 }
-
-let contacts = [
-    { name: "Cassio Zen", email: "cassiozen@gmail.com" },
-    { name: "Dan Abramov", email: "gaearon@somewhere.com" },
-    { name: "Pete Hunt", email: "floydophone@somewhere.com" },
-    { name: "Paul O’Shannessy", email: "zpao@somewhere.com" },
-    { name: "Ryan Florence", email: "rpflorence@somewhere.com" },
-    { name: "Sebastian Markbage", email: "sebmarkbage@here.com" },
-]
-ReactDOM.render( <ContactsApp contacts={contacts} />, document.getElementById('abc'));
+//
+// let contacts = [
+//     { name: "Cassio Zen", email: "cassiozen@gmail.com" },
+//     { name: "Dan Abramov", email: "gaearon@somewhere.com" },
+//     { name: "Pete Hunt", email: "floydophone@somewhere.com" },
+//     { name: "Paul O’Shannessy", email: "zpao@somewhere.com" },
+//     { name: "Ryan Florence", email: "rpflorence@somewhere.com" },
+//     { name: "Sebastian Markbage", email: "sebmarkbage@here.com" },
+// ]
+ReactDOM.render( <ContactsAppContainer />, document.getElementById('abc'));
