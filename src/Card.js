@@ -23,9 +23,9 @@ class Card extends React.Component {
             searchTerm: 'React'
         };
     }
-    handleChange(event) {
-        this.setState({ searchTerm: event.target.value })
-    }
+    // handleChange(event) {
+    //     this.setState({ searchTerm: event.target.value })
+    // }
     toggleDetails() {
         this.setState({showDetails: !this.state.showDetails});
     }
@@ -50,10 +50,10 @@ class Card extends React.Component {
         }
         return (
             <div className="card">
-                <div>
-                    Search Term:
-                    <input type="search" value={this.state.searchTerm} onChange={this.handleChange.bind(this)}/>
-                </div>
+                {/*<div>*/}
+                    {/*Search Term:*/}
+                    {/*<input type="search" value={this.state.searchTerm} onChange={this.handleChange.bind(this)}/>*/}
+                {/*</div>*/}
                 <div style={sideColor}/>
                 <div className={this.state.showDetails ? "card__title card__title--is-open" : "card__title"} onClick={this.toggleDetails.bind(this)}>{this.props.title}</div>
                 {cardDetails}
