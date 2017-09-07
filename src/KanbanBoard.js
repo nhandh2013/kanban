@@ -6,15 +6,15 @@ class KanbanBoard extends React.Component {
     render() {
         return (
             <div className="app">
-                <List id="todo" title="To Do" cards={
+                <List id="todo" title="To Do" taskCallbacks={this.props.taskCallbacks} cards={
                     this.props.cards.filter((card) => card.status === "todo")
                 }/>
 
-                <List id="in-progress" title="In Progress" cards={
+                <List id="in-progress" title="In Progress" taskCallbacks={this.props.taskCallbacks} cards={
                     this.props.cards.filter((card) => card.status === "in-progress")
                 }/>
 
-                <List id="done" title="Done" cards={
+                <List id="done" title="Done" taskCallbacks={this.props.taskCallbacks} cards={
                     this.props.cards.filter((card) => card.status === "done")
                 }/>
             </div>
@@ -22,6 +22,7 @@ class KanbanBoard extends React.Component {
     }
 }
 KanbanBoard.propTypes = {
-    card: PropTypes.arrayOf(PropTypes.object)
+    card: PropTypes.arrayOf(PropTypes.object),
+    taskCallbacks: PropTypes.object
 }
 export default KanbanBoard;

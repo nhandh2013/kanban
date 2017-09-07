@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 let titlePropType = (props, propName, componentName) => {
     if (props[propName]) {
         let value = props[propName];
-        console.log(value);
+        //console.log(value);
         if(typeof value !== 'string' || value.length > 80) {
             return new Error (
                 `${propName} in ${componentName} is longer than 80 characters`
@@ -44,7 +44,7 @@ class Card extends React.Component {
             cardDetails = (
                 <div className="card__details">
                     <span dangerouslySetInnerHTML={{__html:marked(this.props.description)}} />
-                    <CheckList cardId={this.props.id} tasks={this.props.tasks} />
+                    <CheckList cardId={this.props.id} tasks={this.props.tasks} taskCallbacks={this.props.taskCallbacks} />
                 </div>
             )
         }
@@ -67,7 +67,8 @@ Card.propTypes = {
     title: titlePropType,
     description: PropTypes.string,
     color: PropTypes.string,
-    tasks: PropTypes.arrayOf(PropTypes.object)
+    tasks: PropTypes.arrayOf(PropTypes.object),
+    taslCallbacks: PropTypes.object
 }
 
 export default Card;
