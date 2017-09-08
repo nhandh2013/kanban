@@ -3,6 +3,7 @@ import "./App.css";
 //import "./ContactsApp";
 import KanbanBoardContainer from "./KanbanBoardContainer";
 import AnimatedShoppingList from "./AnimatedShoppingList";
+import Container from "./Container";
 
 // let cardsList = [
 //     {
@@ -50,6 +51,7 @@ class HelloMessage extends React.Component {
     render() {
         return (
             <div>
+                <Container />
                 <KanbanBoardContainer/>
                 <AnimatedShoppingList />
             </div>
